@@ -1,4 +1,6 @@
 class Menu < ApplicationRecord
+  has_many :category
+  
   validates :name, presence: true, uniqueness: true
   
   validates :price, comparison: { greater_than_or_equal_to: 0.01 }
