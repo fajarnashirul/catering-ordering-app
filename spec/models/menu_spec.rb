@@ -46,6 +46,6 @@ RSpec.describe Menu, type: :model do
     menu.categories << category2
     Menu.find_category
 
-    expect([category1])
+    expect([category1, category2])
   end
 end
