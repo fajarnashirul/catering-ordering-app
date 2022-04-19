@@ -7,8 +7,15 @@ class Menu < ApplicationRecord
 
   validates :description, length: { maximum: 150, too_long: "description must less than 150 character"}
 
-  def self.find_category
-    Menu.last.categories.select(:name)
-  end
+
+  # def insert_category(menu, categories)
+  #   validate :insert_category
+  #   categories.each do |category|
+  #     menu.categories << category
+  #   end
+  #     if categories != menu.categories
+  #     errors.add(:false_category, "is not multiple")
+  #   end
+  # end
     
 end
