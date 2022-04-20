@@ -1,13 +1,6 @@
 <p style="color: green"><%= notice %></p>
 <%= render @menu %>
 
-<strong>Category:</strong>  
-<% @category.each do |category|%>
-<p>
-  <%= category.name %>
-</p>
-<% end %>
-
 <div>
   <%= link_to "Edit this menu", edit_menu_path(@menu) %> |
   <%= link_to "Back to menus", menus_path %>
