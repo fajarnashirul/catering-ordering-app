@@ -1,7 +1,5 @@
 class Menu < ApplicationRecord
-  has_many :menus_category
-  has_many :categories, :through => :menus_category
-  # has_and_belongs_to_many :categories
+  belongs_to :category
   
   validates :name, presence: true, uniqueness: true
   
@@ -10,11 +8,14 @@ class Menu < ApplicationRecord
   validates :description, length: { maximum: 150, too_long: "description must less than 150 character"}
 
 
-  def insert_category(menu, categories)
-    validate :insert_category
-    categories.each do |category|
-      menu.categories << category
-    end
-  end
+  # def insert_category(menu, categories)
+  #   categories.each do |category|
+  #     menu.categories << category
+  #   end
+  # end
+
+  #  def self.by_params(params)
+  #   where("id = #{params}").order("name")
+  # end
     
 end

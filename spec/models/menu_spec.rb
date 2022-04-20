@@ -2,10 +2,12 @@ require 'rails_helper'
 
 RSpec.describe Menu, type: :model do
   it 'should valid factory bot' do
-    expect(FactoryBot.build(:menu)).to be_valid
+    category1 = FactoryBot.create(:category)
+    expect(FactoryBot.create(:menu)).to be_valid
   end
   
   it 'should invalid with duplicate name ' do
+    category1 = FactoryBot.create(:category)
     menu1 = FactoryBot.create(:menu, name:"Nasi Uduk")
     menu2 = FactoryBot.build(:menu, name:"Nasi Uduk")
 
@@ -37,14 +39,11 @@ RSpec.describe Menu, type: :model do
     expect(menu.errors[:description]).to include("description must less than 150 character")
   end
   
- it 'menu can have multiple categories' do
+ it 'menu can have category' do
     menu = FactoryBot.build(:menu)
 
     category1 = FactoryBot.create(:category)
-    category2 = FactoryBot.create(:category, name: "desert")
-    categor = [category1, category2]
-    menu.insert_category(menu, categor)
-    array = Category.all
-    expect(array.where(menu_id = menu.id).select('name')). to eq([category1.name, category2.name])
+    
+    expect(menu.category.name). to eq(category1.name)
   end
 end

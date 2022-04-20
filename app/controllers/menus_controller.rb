@@ -8,6 +8,7 @@ class MenusController < ApplicationController
 
   # GET /menus/1 or /menus/1.json
   def show
+    
   end
 
   # GET /menus/new
@@ -65,6 +66,6 @@ class MenusController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def menu_params
-      params.require(:menu).permit(:name, :description, :price)
+      params.require(:menu).permit(:name, :description, :price, :category_id)
     end
 end
