@@ -6,9 +6,10 @@ class EmailValidator < ActiveModel::EachValidator
   end
 end
 
-class Customer < ApplicationRecord
+class User < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :address, presence: true
   validates :email, presence: true, uniqueness: true, email: true
   validates :phone, presence: true
+  validates :password, presence: true
 end
