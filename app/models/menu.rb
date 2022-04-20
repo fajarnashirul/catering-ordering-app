@@ -1,5 +1,7 @@
 class Menu < ApplicationRecord
-  has_and_belongs_to_many :categories
+  has_many :menus_category
+  has_many :categories, :through => :menus_category
+  # has_and_belongs_to_many :categories
   
   validates :name, presence: true, uniqueness: true
   

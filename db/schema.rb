@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_16_040417) do
+ActiveRecord::Schema.define(version: 2022_04_20_040600) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -19,9 +19,13 @@ ActiveRecord::Schema.define(version: 2022_04_16_040417) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "categories_menus", id: false, force: :cascade do |t|
-    t.integer "menu_id", null: false
-    t.integer "category_id", null: false
+  create_table "customers", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.text "address"
+    t.string "email"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "menus", force: :cascade do |t|
@@ -30,6 +34,15 @@ ActiveRecord::Schema.define(version: 2022_04_16_040417) do
     t.float "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "menus_categories", force: :cascade do |t|
+    t.integer "menu_id"
+    t.integer "category_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_menus_categories_on_category_id"
+    t.index ["menu_id"], name: "index_menus_categories_on_menu_id"
   end
 
 end

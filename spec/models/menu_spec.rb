@@ -42,8 +42,9 @@ RSpec.describe Menu, type: :model do
 
     category1 = FactoryBot.create(:category)
     category2 = FactoryBot.create(:category, name: "desert")
-    categories = [category1, category2]
-    menu.insert_category(menu, categories)
-    expect(menu.categories.select('name')). to eq([category1, category2])
+    categor = [category1, category2]
+    menu.insert_category(menu, categor)
+    array = Category.all
+    expect(array.where(menu_id = menu.id).select('name')). to eq([category1.name, category2.name])
   end
 end
