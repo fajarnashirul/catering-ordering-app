@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe MenuController, type: :controller do
+RSpec.describe MenusController, type: :controller do
   describe 'GET #index' do
     it 'populate an array of all menus' do
       menu1 = FactoryBot.create(:menu)
@@ -92,7 +92,7 @@ RSpec.describe MenuController, type: :controller do
     end
     it "redirects to menu#index" do
       delete :destroy, params: { id: @menu }
-      expect(response).to redirect_to menu_index_path
+      expect(response).to redirect_to menus_path
     end
   end
 end

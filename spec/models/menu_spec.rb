@@ -36,13 +36,14 @@ RSpec.describe Menu, type: :model do
     
     expect(menu.errors[:description]).to include("description must less than 150 character")
   end
- # it 'name can have multiple categories' do
- #    menu = FactoryBot.build(:menu)
+  
+ it 'menu can have multiple categories' do
+    menu = FactoryBot.build(:menu)
 
- #    category1 = FactoryBot.build(:category)
- #    category2 = FactoryBot.create(:category, name: "desert")
- #    categories = [category1,category2]
- #    menu.insert_category(menu, categories)
- #    expect(menu.errors[:false_category]). to include("error")
- #  end
+    category1 = FactoryBot.create(:category)
+    category2 = FactoryBot.create(:category, name: "desert")
+    categories = [category1, category2]
+    menu.insert_category(menu, categories)
+    expect(menu.categories.select('name')). to eq([category1, category2])
+  end
 end
