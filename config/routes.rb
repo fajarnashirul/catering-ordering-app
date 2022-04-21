@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
+  
+  get 'session/create'
+  get 'session/destroy'
   resources :users
   resources :categories
   resources :menus
   resources :menu
+  
+  get "login" => "session#new"
+  post "login" => "session#create"
   # get 'menu/index'
   # get 'menu/:id' => 'menu#show'
   # get 'menu/create'

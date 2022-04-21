@@ -1,13 +1,16 @@
 class UsersController < ApplicationController
-  before_action :check_if_admin, only: %i[ destroy ]
+  include SessionHelper
+  
+  before_action :check_admin, only: %i[ destroy]
 
   # GET /users or /users.json
-  def index
-    @users = User.all
-  end
+  # def index
+  #   @users = User.all
+  # end
 
   # GET /users/1 or /users/1.json
   def show
+    @user = User.find(params[:id])
   end
 
   # GET /users/new
