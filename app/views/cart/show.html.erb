@@ -1,2 +1,21 @@
-<h1>Cart#show</h1>
-<p>Find me in app/views/cart/show.html.erb</p>
+<h2>Cart show</h2>
+<ul>
+  <% @cart.order_details.each do |menu_item| %>
+    <li>Item: <%= menu_item.menu.name %>/ Price: <%= number_to_currency(menu_item.menu.price) %>/ Quantity: <%= order_detail.quantity %>/ Total Price: <%= number_to_currency(order_detail.total_price) %>
+    <ul>
+      <li>
+        <%= link_to "Add one", order_detail_add_path(:id => order_detail), method: :post %>
+        <%= link_to "Reduce one", order_detail_reduce_path(:id => order_detail), method: :post %>
+      </li>
+      <li>
+        <%= link_to "Remove item", order_detail_path(order_detail), method: :delete %>
+      </li>
+    </ul>
+    #
+  <% end %>
+</ul>
+<h3>Sub total: <%= number_to_currency(@cart.sub_total) %></h3>
+
+<%= link_to "Proceed to checkout", new_order_path %><br>
+#
+<%= link_to "Empty cart", cart_path(@current_cart),method: :delete, data: {confirm: "Are you sure?"}

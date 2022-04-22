@@ -8,9 +8,13 @@
     <p>
       <%= link_to "Show this menu", menu %>
     </p>
+    <p>
+      <%= button_to "Add #{menu.name} to cart", order_details_path(:menu_id => menu.id) %>
+    </p>
   <% end %>
 </div>
-
+<% if check_admin == true %>
 <%= link_to "New menu", new_menu_path %>
   |
 <%= link_to "Back to dashboard", admin_path %>
+<% end %>
