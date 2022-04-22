@@ -1,15 +1,13 @@
-Rails.application.routes.draw do
-  get 'cart/show'
-  # get 'test/index'
-  # post 'test/show'
+  Rails.application.routes.draw do
   
-  get 'session/create'
-  # get 'session/destroy'
+  root 'session#new'
+  
+
+  
   resources :users
   resources :categories
   resources :menus
   resources :administrator
-  resources :test
   
   get "login" => "session#new"
   post "login" => "session#create"
@@ -17,6 +15,14 @@ Rails.application.routes.draw do
   get "logout" => "session#logout"
   get "order_list" => "order_detail#add_cart"
   get "menu_order" => "order_detaul#menu_list"
+  get 'session/create'
+  get 'carts/:id' => "carts#show", as: "cart"
+  delete 'carts/:id' => "carts#destroy"
+  post 'order_details/:id/add' => "order_details#add_quantity", as: "order_detail_add"
+  post 'order_details/:id/reduce' => "order_details#reduce_quantity", as: "order_detail_reduce"
+  post 'order_details' => "order_details#create"
+  get 'order_details/:id' => "order_details#show", as: "order_detail"
+  delete 'order_details/:id' => "order_details#destroy"
   # get 'menu/index'
   # get 'menu/:id' => 'menu#show'
   # get 'menu/create'
