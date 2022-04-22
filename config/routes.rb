@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
   
   get 'session/create'
-  get 'session/destroy'
+  # get 'session/destroy'
   resources :users
   resources :categories
   resources :menus
-  resources :menu
+  resources :administrator
   
   get "login" => "session#new"
   post "login" => "session#create"
+  get "admin" => "administrator#index"
+  get "logout" => "session#logout"
   # get 'menu/index'
   # get 'menu/:id' => 'menu#show'
   # get 'menu/create'

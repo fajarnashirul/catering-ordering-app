@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_21_044520) do
+ActiveRecord::Schema.define(version: 2022_04_21_082523) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2022_04_21_044520) do
   create_table "customer_orders", force: :cascade do |t|
     t.string "email"
     t.float "total"
-    t.string "status"
+    t.string "status", default: "NEW"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id", null: false
@@ -40,11 +40,13 @@ ActiveRecord::Schema.define(version: 2022_04_21_044520) do
   end
 
   create_table "order_details", force: :cascade do |t|
-    t.integer "customer_order_id"
-    t.integer "menu_id"
+    t.integer "cutomer_order_id", null: false
+    t.integer "menu_id", null: false
     t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["cutomer_order_id"], name: "index_order_details_on_cutomer_order_id"
+    t.index ["menu_id"], name: "index_order_details_on_menu_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -60,4 +62,6 @@ ActiveRecord::Schema.define(version: 2022_04_21_044520) do
 
   add_foreign_key "customer_orders", "users"
   add_foreign_key "menus", "categories"
+  add_foreign_key "order_details", "cutomer_orders"
+  add_foreign_key "order_details", "menus"
 end

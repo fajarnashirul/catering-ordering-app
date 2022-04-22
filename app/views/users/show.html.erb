@@ -3,7 +3,14 @@
 <%= render @user %>
 
 <div>
-  <%= link_to "Edit this user", edit_user_path(@user) %> |
-
-  <%= link_to "Go to Menu List", menus_path %>
+   <% if check_admin == false%>
+      <%= link_to "Edit this user", edit_user_path(@user) %> |
+    <%= link_to "Go to Menu List", menus_path %>
+  <% else %>
+    <%= link_to "Go to User List", users_path %>
+          <%= button_to('Destroy', users_path, :confirm => 'Are you sure?',
+          :method => "delete") %>
+    <% end %>
+      |
+  <%= link_to "Log out", logout_path, method: :destroy %>
 </div>

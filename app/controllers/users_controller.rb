@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   include SessionHelper
-  
-  before_action :check_admin, only: %i[ destroy]
+  before_action :check_login
+  before_action :check_admin, only: %i[ destroy, index]
 
   # GET /users or /users.json
-  # def index
-  #   @users = User.all
-  # end
+  def index
+    @users = User.all
+  end
 
   # GET /users/1 or /users/1.json
   def show

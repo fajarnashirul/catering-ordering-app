@@ -1,4 +1,6 @@
 class Menu < ApplicationRecord
+  has_many :order_details
+  has_many :customer_orders, through: :order_details
   belongs_to :category
   
   validates :name, presence: true, uniqueness: true

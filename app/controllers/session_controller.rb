@@ -8,19 +8,20 @@ class SessionController < ApplicationController
      user = User.find_by(email: params[:session][:email].downcase)
     
     # if user && user.authenticate(params[:session][:password])
-    if user.present?
-      log_in user
+    if user.present? && params[:session][:password] == user.password
+        log_in user
       if current_user.role == 'admin'
-        redirect_to dashboard_path
+        redirect_to admin_path
       else
         redirect_to user_path(session[:user_id])
       end
        else
-      # flash.now[:danger] = "Invalid email/password confirmation"
+      flash.now[:danger] = "Invalid email/password confirmation"
       render "new"
     end
   end
 
-  def destroy
+  def logout
+    log_out
   end
 end

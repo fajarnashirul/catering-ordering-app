@@ -3,7 +3,7 @@ class CreateCustomerOrders < ActiveRecord::Migration[7.0]
     create_table :customer_orders do |t|
       t.string :email
       t.float :total
-      t.string :status
+      t.string :status, :default => "NEW"
 
       t.timestamps
     end
