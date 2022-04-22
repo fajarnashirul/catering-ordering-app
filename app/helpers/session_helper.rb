@@ -1,7 +1,7 @@
 module SessionHelper
   def check_login
     if current_user == nil
-      redirect_to login_path notice: "You need to login first."
+      redirect_to login_path, notice: "You need to login first."
     end
   end
   

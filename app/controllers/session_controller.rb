@@ -1,5 +1,6 @@
 class SessionController < ApplicationController
   include SessionHelper
+  
   def new
     session[:referrer] = request.referer
   end

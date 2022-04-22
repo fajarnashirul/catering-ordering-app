@@ -40,12 +40,12 @@ ActiveRecord::Schema.define(version: 2022_04_21_082523) do
   end
 
   create_table "order_details", force: :cascade do |t|
-    t.integer "cutomer_order_id", null: false
+    t.integer "customer_order_id", null: false
     t.integer "menu_id", null: false
     t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["cutomer_order_id"], name: "index_order_details_on_cutomer_order_id"
+    t.index ["customer_order_id"], name: "index_order_details_on_customer_order_id"
     t.index ["menu_id"], name: "index_order_details_on_menu_id"
   end
 
@@ -62,6 +62,6 @@ ActiveRecord::Schema.define(version: 2022_04_21_082523) do
 
   add_foreign_key "customer_orders", "users"
   add_foreign_key "menus", "categories"
-  add_foreign_key "order_details", "cutomer_orders"
+  add_foreign_key "order_details", "customer_orders"
   add_foreign_key "order_details", "menus"
 end

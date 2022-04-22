@@ -10,7 +10,7 @@ class MenusController < ApplicationController
 
   # GET /menus/1 or /menus/1.json
   def show
-    
+    @menu = Menu.find(params[:id])
   end
 
   # GET /menus/new
