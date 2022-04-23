@@ -1,5 +1,5 @@
 class CustomerOrder < ApplicationRecord
-  has_many :order_details
+  has_many :order_details, dependent: :destroy
   has_many :menus, through: :order_details 
   belongs_to :user
   validates :total, numericality: true, presence: true

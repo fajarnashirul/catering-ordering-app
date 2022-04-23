@@ -1,2 +1,11 @@
-<h1>CustomerOrder#index</h1>
-<p>Find me in app/views/customer_order/index.html.erb</p>
+<% @cutomer_orders.each do |customer_order| %>
+  <p>Email: <%= customer.email %></p>
+  <p>Order Details: </p>
+  <ul>
+    <% customer_order.order_details.each do |item| %>
+    <li><%= item.quantity %> x <%= item.menu.name %></li>
+    <% end %>
+  </ul>
+  <p>Status: <%= customer_order.status %></p>
+  <p>Total: <%= customer_order.order_details.total_price %></p>
+<% end

@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :order_detail do
-    cutomer_order { 1 }
-    menu { 1 }
+    menu_id { 1 }
+    cart_id { 1 }
+    customer_order_id { 1 }
     quantity { 1 }
   end
 end

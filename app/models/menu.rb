@@ -1,5 +1,5 @@
 class Menu < ApplicationRecord
-  has_many :order_details
+  has_many :order_details, dependent: :destroy
   has_many :customer_orders, through: :order_details
   belongs_to :category
   

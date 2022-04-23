@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2022_04_22_160051) do
   create_table "order_details", force: :cascade do |t|
     t.integer "customer_order_id", null: false
     t.integer "menu_id", null: false
-    t.integer "quantity"
+    t.integer "quantity", default: 1
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "cart_id", null: false
@@ -70,6 +70,5 @@ ActiveRecord::Schema.define(version: 2022_04_22_160051) do
   add_foreign_key "customer_orders", "users"
   add_foreign_key "menus", "categories"
   add_foreign_key "order_details", "carts"
-  add_foreign_key "order_details", "customer_orders"
   add_foreign_key "order_details", "menus"
 end
