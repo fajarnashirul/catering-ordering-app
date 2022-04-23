@@ -1,4 +1,7 @@
   Rails.application.routes.draw do
+    get 'customer_order/index'
+    get 'customer_order/show'
+    get 'customer_order/new'
   
   root 'session#new'
   
